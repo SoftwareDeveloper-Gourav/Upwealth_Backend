@@ -71,7 +71,7 @@ const userLogin = async (req,res)=>{
     const checkEmail = await userModel.findOne({email:username});
     if(checkEmail){
         if(checkEmail.password == password){
-           const token = jwt.sign({name:checkEmail.first_name,id:checkEmail._id},SECRET_KEY,{expiresIn:"1 day"});
+           const token = jwt.sign({name:checkEmail.first_name,id:checkEmail._id},SECRET_KEY,{expiresIn:"2 day"});
            res.setHeader('token',token);
            res.cookie('user',token);
            const response = returnToUser(true,"Success","Congratulations, you're logged in!.","success");
